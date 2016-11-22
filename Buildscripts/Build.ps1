@@ -16,7 +16,7 @@ Task Build {
             /p:configuration=release `
             /p:runoctopack=true `
             /p:OctoPackAppendToVersion=$ReleaseTag-$BuildNumber `
-            /p:OctoPackPublishPackageToHttp=http://localhost:8081/api/v2/package `
+            /p:OctoPackPublishPackageToHttp=http://localhost:8081/nuget/packages `
             /p:OctoPackPublishApiKey=$OctopusApiKey
     }
 
