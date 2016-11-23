@@ -7,6 +7,8 @@ Properties {
 Task Default -Depends Build, Push
 
 Task Build {
+    $PaddedBuildNumber = $BuildNumber.PadLeft(4,"0")
+    
     Exec {
         Push-Location ..\
 
@@ -15,7 +17,7 @@ Task Build {
             /t:build `
             /p:configuration=release `
             /p:runoctopack=true `
-            /p:OctoPackAppendToVersion=$ReleaseTag-$BuildNumber.PadLeft(4,"0") `
+            /p:OctoPackAppendToVersion=$ReleaseTag-$PaddedBuildNumber `
             /p:OctoPackPublishPackageToHttp=http://localhost:8081/nuget/packages `
             /p:OctoPackPublishApiKey=$OctopusApiKey
     }
