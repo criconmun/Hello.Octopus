@@ -2,6 +2,7 @@ Properties {
     $ReleaseTag
     $BuildNumber
     $OctopusApiKey
+    $Channel
 }
 
 Task Default -Depends Build, Push
@@ -25,7 +26,8 @@ Task Build {
 }
 
 Task Push {
-    & Octo.exe create-release --project HelloOctopus.Web --server http://localhost:8081/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
-    & Octo.exe create-release --project HelloOctopus.Service --server http://localhost:80:81/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
-
+    Exec{
+        & Octo.exe create-release --project HelloOctopus.Web --channel $Channel --server http://localhost:8081/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
+        & Octo.exe create-release --project HelloOctopus.Service --channel $Channel --server http://localhost:80:81/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
+    }
 }
