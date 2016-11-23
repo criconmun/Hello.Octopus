@@ -28,6 +28,6 @@ Task Build {
 Task Push {
     Exec{
         & Octo.exe create-release --project HelloOctopus.Web --channel $Channel --server http://localhost:8081/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
-        & Octo.exe create-release --project HelloOctopus.Service --channel $Channel --server http://localhost:80:81/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
+        & Octo.exe create-release --project HelloOctopus.Service --channel $Channel --server http://localhost:8081/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
     }
 }
