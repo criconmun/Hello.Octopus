@@ -25,5 +25,7 @@ Task Build {
 }
 
 Task Push {
-    Write-Host "Starting Push"
+    & "C:\Tools\Octo\Octo.exe" create-release --project HelloOctopus.Web --server http://localhost:8081/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
+    & "C:\Tools\Octo\Octo.exe" create-release --project HelloOctopus.Service --server http://localhost:80:81/ --apiKey $OctopusApiKey --releaseNotes "Jenkins build [$BuildNumber](http://localhost:8080/job/Hello.Octopus-sprint/$BuildNumber)/"
+
 }
